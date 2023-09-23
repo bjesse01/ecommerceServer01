@@ -39,8 +39,6 @@ function generateDateTime() {
   return { date: formattedDate, time: formattedTime };
 }
 const { date, time } = generateDateTime();
-// console.log(date);
-// console.log(time);
 
 //FOR EMAIL
 app.post("/sendEmail", (req, res) => {

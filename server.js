@@ -29,7 +29,7 @@ function generateDateTime() {
   const now = new Date();
   const year = now.getFullYear();
   const month = String(now.getMonth() + 1).padStart(2, "0");
-  const day = String(now.getDay()).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
   const hours = String(now.getHours()).padStart(2, "0");
   const minutes = String(now.getMinutes()).padStart(2, "0");
   const seconds = String(now.getSeconds()).padStart(2, "0");
@@ -38,10 +38,10 @@ function generateDateTime() {
   const formattedTime = `${hours}:${minutes}:${seconds}`;
   return { date: formattedDate, time: formattedTime };
 }
-const { date, time } = generateDateTime();
 
 //FOR EMAIL
 app.post("/sendEmail", (req, res) => {
+  const { date, time } = generateDateTime();
   const { email, message } = req.body;
 
   const sqlQuery =
@@ -58,8 +58,6 @@ app.post("/sendEmail", (req, res) => {
 });
 
 app.get("/mailData", (req, res) => {
-  const { email, message } = req.body;
-
   const sqlQuery = "SELECT * FROM reviews";
   db.query(sqlQuery, (err, results) => {
     if (err) {

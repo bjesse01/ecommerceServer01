@@ -4,9 +4,9 @@
   "description": "Just a simple ecommerce site...",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "devStart": "nodemon server.js",
-    "deploy": "firebase deploy --only functions:api"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon index.js",
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",

@@ -4,6 +4,7 @@ const admin = require("firebase-admin");
 const serviceAccount = require("./ecommerceapi-25299.json");
 const bodyParser = require("body-parser");
 const db = require("./src/database");
+require("dotenv").config();
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -137,7 +138,7 @@ app.get("/api/clothings/id/:id", async (req, res) => {
   }
 });
 
-const port = 2000;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`Server on ${port}`);
 });
